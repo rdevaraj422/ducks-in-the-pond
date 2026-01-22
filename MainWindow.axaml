@@ -1,0 +1,81 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="DuckSimulatorApp.Views.MainWindow"
+        Width="1100" Height="650"
+        Title="Duck Simulator - Inheritance Pattern">
+
+  <ScrollViewer>
+    <StackPanel Margin="30" Spacing="18">
+
+      <!-- Header -->
+      <StackPanel Spacing="6" HorizontalAlignment="Center">
+        <TextBlock Text="🦆  Ducks in the pond"
+                   FontSize="28"
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center"/>
+      </StackPanel>
+
+      <!-- Duck selection card -->
+      <Border Padding="18" CornerRadius="10" BorderThickness="1">
+        <StackPanel Spacing="12">
+          <TextBlock Text="Select a Duck Type:"
+                     FontSize="16"
+                     FontWeight="SemiBold"/>
+
+          <ComboBox x:Name="DuckTypeCombo"
+                    Width="260"
+                    SelectedIndex="0">
+            <ComboBoxItem Content="🦆 Mallard Duck"/>
+            <ComboBoxItem Content="🦆 Redhead Duck"/>
+            <ComboBoxItem Content="🐥 Rubber Duck"/>
+            <ComboBoxItem Content="🪵 Decoy Duck"/>
+          </ComboBox>
+
+          <TextBlock x:Name="DuckDescriptionText"
+                     Text="I'm a Mallard Duck - green head, brown body!"
+                     FontSize="14"/>
+        </StackPanel>
+      </Border>
+
+      <!-- Actions card -->
+      <Border Padding="18" CornerRadius="10" BorderThickness="1">
+        <StackPanel Spacing="14">
+          <TextBlock Text="Duck Actions:"
+                     FontSize="16"
+                     FontWeight="SemiBold"/>
+
+          <StackPanel Orientation="Horizontal" Spacing="14">
+            <Button Width="140" x:Name="QuackBtn" Content="Quack 🔊"/>
+            <Button Width="140" x:Name="SwimBtn" Content="Swim 🏊‍♂️"/>
+            <Button Width="140" x:Name="DisplayBtn" Content="Display 👀"/>
+          </StackPanel>
+
+          <!-- Output/status area -->
+          <Border Padding="14" CornerRadius="10" BorderThickness="1">
+            <TextBlock x:Name="StatusText"
+                       Text="Ready."
+                       FontSize="14"/>
+          </Border>
+
+          <TextBlock FontSize="12" Opacity="0.75"
+                     Text="💡 Note: The display() method will be abstract in the base Duck class. Each subtype implements its own version!"/>
+        </StackPanel>
+      </Border>
+
+      <!-- Pond area placeholder (we’ll animate ducks here later) -->
+      <Border Padding="18" CornerRadius="10" BorderThickness="1">
+        <StackPanel Spacing="10">
+          <TextBlock Text="Pond"
+                     FontSize="16"
+                     FontWeight="SemiBold"/>
+            <Border CornerRadius="12" Background="#1f6feb" Padding="10">
+                <Canvas x:Name="PondCanvas" Height="240" />
+            </Border>
+          <TextBlock FontSize="12" Opacity="0.75"
+                     Text="We’ll add duck emojis moving/bouncing inside this canvas in the next steps."/>
+        </StackPanel>
+      </Border>
+
+    </StackPanel>
+  </ScrollViewer>
+</Window>

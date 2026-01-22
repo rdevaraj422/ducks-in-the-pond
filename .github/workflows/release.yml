@@ -1,0 +1,43 @@
+name: Release DuckSimulator
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build Docker image (multi-runtime publish)
+        run: docker build -t ducksim-build .
+
+      - name: Extract artifacts
+        run: |
+          docker create --name ducksim_temp ducksim-build
+          docker cp ducksim_temp:/artifacts/out ./out
+          docker rm ducksim_temp
+          ls -lah ./out
+
+      - name: Zip each runtime folder
+        run: |
+          cd out
+          zip -r ../DuckSimulatorApp-linux-x64.zip linux-x64
+          zip -r ../DuckSimulatorApp-osx-arm64.zip osx-arm64
+          zip -r ../DuckSimulatorApp-win-x64.zip win-x64
+          cd ..
+          ls -lah *.zip
+
+      - name: Create GitHub Release + upload zips
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            DuckSimulatorApp-linux-x64.zip
+            DuckSimulatorApp-osx-arm64.zip
+            DuckSimulatorApp-win-x64.zip
