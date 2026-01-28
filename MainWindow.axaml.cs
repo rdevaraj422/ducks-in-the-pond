@@ -47,6 +47,8 @@ public partial class MainWindow : Window
         QuackBtn.Click += QuackBtn_Click;
         SwimBtn.Click += SwimBtn_Click;
         DisplayBtn.Click += DisplayBtn_Click;
+        FlyBtn.Click += FlyBtn_Click;
+
 
         // Create visuals
         EnsureDuckVisual();
@@ -238,4 +240,12 @@ public partial class MainWindow : Window
         _quackTimer.Interval = TimeSpan.FromSeconds(seconds);
         _quackTimer.Start();
     }
+    private void FlyBtn_Click(object? sender, RoutedEventArgs e)
+    {
+        var result = _currentDuck.PerformFly();
+
+        StatusText.Text = $"{_currentDuck.Emoji} {result}";
+        ShowSpeech(result);
+    }
+
 }

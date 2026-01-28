@@ -1,10 +1,11 @@
 using DuckSimulatorApp.Behaviors;
+using DuckSimulatorApp.Behaviors.Fly;
 
 namespace DuckSimulatorApp.Models;
 
 public class RedheadDuck : Duck
 {
-    public RedheadDuck() : base(new Quack(), new SwimNormally()) { }
+    public RedheadDuck() : base(new Quack(), new SwimNormally(), new FlyWithWings()) { }
 
     public override string Name => "Redhead Duck";
     public override string Emoji => "🦆";

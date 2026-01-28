@@ -1,10 +1,11 @@
 using DuckSimulatorApp.Behaviors;
+using DuckSimulatorApp.Behaviors.Fly;
 
 namespace DuckSimulatorApp.Models;
 
 public class RubberDuck : Duck
 {
-    public RubberDuck() : base(new Squeak(), new SwimNormally()) { }
+    public RubberDuck() : base(new Squeak(), new SwimNormally(),new FlyNoWay()) { }
 
     public override string Name => "Rubber Duck";
     public override string Emoji => "🐥";

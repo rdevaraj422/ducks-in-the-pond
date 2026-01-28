@@ -48,6 +48,7 @@
             <Button Width="140" x:Name="QuackBtn" Content="Quack 🔊"/>
             <Button Width="140" x:Name="SwimBtn" Content="Swim 🏊‍♂️"/>
             <Button Width="140" x:Name="DisplayBtn" Content="Display 👀"/>
+            <Button x:Name="FlyBtn" Content="Fly 🪽" />
           </StackPanel>
 
           <!-- Output/status area -->
