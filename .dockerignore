@@ -1,7 +1,6 @@
-cat > .gitignore << 'EOF'
 bin/
 obj/
 .vscode/
 .DS_Store
 docker_artifacts/
-EOF
+
